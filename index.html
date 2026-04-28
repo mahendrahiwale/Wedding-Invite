@@ -17,6 +17,11 @@ body {
     overflow-x: hidden;
 }
 
+/* ✅ ADD THIS */
+body.no-scroll {
+    overflow: hidden;
+}
+
 /* GOLD PARTICLES */
 .particles-bg {
     position: fixed;
@@ -32,16 +37,20 @@ body {
 /* ENTRY */
 #entry {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
+    height: 100dvh; /* ✅ FIX */
     background: radial-gradient(circle, #1a1a1a, #000);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10;
+    z-index: 9999; /* ✅ ensure full cover */
 }
 
+/* ✅ ADD THIS */
 .particles-entry {
+    pointer-events: none;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -282,10 +291,22 @@ header {
     </div>
 </div>
 
+<!-- Footer -->
+<div class="section">
+    <p>We look forward to celebrating with you 💖</p>
+</div>
+
 <script>
+// ✅ LOCK SCROLL INITIALLY
+document.body.classList.add("no-scroll");
+
 // ENTRY
 function enterSite() {
     document.getElementById("entry").style.display = "none";
+
+    // ✅ ENABLE SCROLL AFTER ENTER
+    document.body.classList.remove("no-scroll");
+
     window.scrollTo(0,0);
 }
 
