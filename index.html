@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mahendra ❤️ Deepali Wedding</title>
+<title>Mahendra & Deepali Wedding</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Great+Vibes&display=swap" rel="stylesheet">
 
@@ -11,57 +11,129 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: #fffaf7;
+    background: #0c0c0c;
+    color: white;
     text-align: center;
+    overflow-x: hidden;
 }
 
-/* Entry */
+/* GOLD PARTICLES */
+.particles-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(255,215,0,0.8) 1px, transparent 1px);
+    background-size: 25px 25px;
+    opacity: 0.25;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ENTRY */
 #entry {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: #000;
-    color: white;
+    background: radial-gradient(circle, #1a1a1a, #000);
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    z-index: 999;
+    align-items: center;
+    z-index: 10;
 }
-#entry button {
-    padding: 12px 25px;
+
+.particles-entry {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(255,215,0,0.9) 1px, transparent 1px);
+    background-size: 25px 25px;
+    opacity: 0.3;
+}
+
+.entry-content {
+    position: relative;
+    z-index: 2;
+}
+
+.couple-name {
+    font-family: 'Great Vibes', cursive;
+    font-size: 75px;
+    color: gold;
+    text-shadow: 0 0 20px rgba(255,215,0,0.7);
+}
+
+.heart {
+    animation: beat 1s infinite;
+}
+
+.invite-text {
+    margin-top: 15px;
     font-size: 18px;
+}
+
+#entry button {
+    margin-top: 25px;
+    padding: 12px 35px;
     border: none;
     background: gold;
+    border-radius: 30px;
     cursor: pointer;
 }
 
-/* Header */
+/* ANIMATION */
+@keyframes beat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* HEADER */
 header {
     height: 100vh;
     background: url('cover.jpg') center/cover no-repeat;
-    color: white;
+    position: relative;
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
-h1 {
+.header-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+.header-content {
+    position: relative;
+    text-align: center;
+    z-index: 2;
+}
+
+.main-names {
     font-family: 'Great Vibes', cursive;
-    font-size: 60px;
+    font-size: 75px;
+    color: #f5d17a;
+    margin: 0;
 }
 
-/* Sections */
-.section {
-    padding: 50px 20px;
+.line {
+    width: 80px;
+    height: 1px;
+    background: #f5d17a;
+    margin: 20px auto;
+    opacity: 0.7;
 }
 
-/* Countdown */
-#countdown {
-    font-size: 24px;
-    color: #ffd700;
+/* COUNTDOWN */
+.wedding-date {
+    font-size: 22px;
+    letter-spacing: 2px;
+    font-weight: 300;
+    margin-top: 15px;
 }
 
-/* ✅ EVENTS SIDE-BY-SIDE */
+/* EVENTS */
 .events-container {
     display: flex;
     flex-wrap: wrap;
@@ -70,88 +142,91 @@ h1 {
 }
 
 .event-card {
-    background: #fff;
+    background: rgba(255,255,255,0.05);
     padding: 20px;
-    flex: 1 1 300px;
-    max-width: 320px;
     border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    border: 1px solid gold;
+    max-width: 320px;
 }
 
 .event-title {
+    color: gold;
     font-size: 22px;
-    color: #b76e79;
 }
 
-/* Buttons */
 .btn {
+    background: gold;
+    color: black;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
     display: inline-block;
     margin-top: 10px;
-    padding: 10px 20px;
-    background: #b76e79;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
 }
 
-/* Gallery */
-.gallery-section {
-    padding: 60px 20px;
-}
-
-.gallery-title {
-    font-family: 'Great Vibes', cursive;
-    font-size: 42px;
-    margin-bottom: 30px;
-    color: #b76e79;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    max-width: 1100px;
+/* CAROUSEL */
+.carousel {
+    overflow: hidden;
+    max-width: 900px;
     margin: auto;
 }
 
-.gallery-grid img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 15px;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+.carousel-track {
+    display: flex;
+    width: calc(200%);
+    animation: scroll 25s linear infinite;
 }
 
-.gallery-grid img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+.carousel img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Entry -->
+<!-- PARTICLES -->
+<div class="particles-bg"></div>
+
+<!-- ENTRY -->
 <div id="entry">
-    <h1>Mahendra ❤️ Deepali</h1>
-    <p>We invite you to celebrate our wedding</p>
-    <button onclick="enterSite()">Enter</button>
+    <div class="particles-entry"></div>
+
+    <div class="entry-content">
+        <h1 class="couple-name">
+            Mahendra ❤️ Deepali
+        </h1>
+
+        <p class="invite-text">We invite you to celebrate our wedding</p>
+
+        <button onclick="enterSite()">Enter</button>
+    </div>
 </div>
 
-<!-- Music -->
-<audio id="music" loop>
-  <source src="your-music-link.mp3" type="audio/mpeg">
-</audio>
-
-<!-- Header -->
+<!-- HEADER -->
 <header>
-    <h1>Mahendra & Deepali</h1>
-    <h2>15 May 2026</h2>
-    <div id="countdown"></div>
+    <div class="header-overlay"></div>
+
+    <div class="header-content">
+        <h1 class="main-names">
+            Mahendra &nbsp&&nbsp Deepali
+        </h1>
+
+        <div class="line"></div>
+
+        <h2 class="wedding-date" id="countdown"></h2>
+    </div>
 </header>
 
-<!-- Events -->
-<div class="section">
+<!-- EVENTS -->
+<div>
     <h2>Wedding Events</h2>
 
     <div class="events-container">
@@ -159,60 +234,62 @@ h1 {
         <div class="event-card">
             <div class="event-title">🎶 Sangeet</div>
             <p>14 May 2026 | 5:00 PM</p>
-            <p>Hillside Community Hall, Powai</p>
+            <p>Hillside Community Hall,<br>IIT Powai, Mumbai</p>
             <a class="btn" href="https://www.google.com/maps/place/Hillside+Community+Hall/data=!4m2!3m1!1s0x0:0xa88236d0b759839a" target="_blank">📍 Location</a>
         </div>
 
         <div class="event-card">
             <div class="event-title">🌼 Haldi</div>
             <p>14 May 2026 | 6:00 PM</p>
-            <p>Hillside Community Hall, Powai</p>
+            <p>Hillside Community Hall,<br>IIT Powai, Mumbai</p>
             <a class="btn" href="https://www.google.com/maps/place/Hillside+Community+Hall/data=!4m2!3m1!1s0x0:0xa88236d0b759839a" target="_blank">📍 Location</a>
         </div>
 
         <div class="event-card">
             <div class="event-title">💍 Wedding & Reception</div>
             <p>15 May 2026 | 6:15 PM</p>
-            <p>Murlidhar Banquet, Thane</p>
-            <a class="btn" href="https://www.google.com/maps/place/Murlidhar+Banquet" target="_blank">📍 Location</a>
+            <p>Murlidhar Banquet,<br>Thane West, Maharashtra</p>
+            <a class="btn" href="https://www.google.com/maps/place/Murlidhar+Banquet+-+Best+Banquet+Hall+in+Thane/@19.2771232,72.9575781,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7bb3059d473df:0x7b07f35d37ea41dd!8m2!3d19.2771232!4d72.9575781!16s%2Fg%2F11ydkq38gm?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+                📍 View Location
+            </a>
         </div>
 
     </div>
 </div>
 
-<!-- Gallery -->
-<div class="gallery-section">
-    <h2 class="gallery-title">Our Moments ✨</h2>
+<!-- CAROUSEL -->
+<div>
+    <h2>Our Moments ✨</h2>
 
-    <div class="gallery-grid">
-        <img src="1.jpg">
-        <img src="2.jpg">
-        <img src="3.jpg">
-        <img src="4.jpg">
-        <img src="5.jpg">
-        <img src="6.jpg">
-        <img src="7.jpg">
-        <img src="8.jpg">
-        <img src="9.jpg">
-        <img src="10.jpg">
-        <img src="11.jpg">
-        <img src="12.jpg">
+    <div class="carousel">
+        <div class="carousel-track">
+
+            <img src="1.jpg">
+            <img src="2.jpg">
+            <img src="3.jpg">
+            <img src="4.jpg">
+            <img src="5.jpg">
+            <img src="6.jpg">
+
+            <img src="1.jpg">
+            <img src="2.jpg">
+            <img src="3.jpg">
+            <img src="4.jpg">
+            <img src="5.jpg">
+            <img src="6.jpg">
+
+        </div>
     </div>
 </div>
 
-<!-- Footer -->
-<div class="section">
-    <p>We look forward to celebrating with you 💖</p>
-</div>
-
 <script>
-// Entry
+// ENTRY
 function enterSite() {
     document.getElementById("entry").style.display = "none";
-    document.getElementById("music").play();
+    window.scrollTo(0,0);
 }
 
-// Countdown
+// COUNTDOWN
 var weddingDate = new Date("May 15, 2026 18:15:00").getTime();
 
 setInterval(function() {
@@ -225,7 +302,7 @@ setInterval(function() {
     var s = Math.floor((gap%(1000*60))/1000);
 
     document.getElementById("countdown").innerHTML =
-        d+" Days "+h+" Hrs "+m+" Min "+s+" Sec";
+        d + "d : " + h + "h : " + m + "m : " + s + "s";
 },1000);
 </script>
 
