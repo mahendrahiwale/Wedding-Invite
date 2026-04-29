@@ -72,13 +72,19 @@ body.no-scroll {
     text-shadow: 0 0 20px rgba(255,215,0,0.7);
 }
 
-/* ✅ ONLY CHANGE ADDED */
+/* ✅ FIXED: Desktop inline, Mobile block */
 .couple-name span {
-    display: block;
+    display: inline;
 }
 
-.couple-name .heart {
-    margin: 10px 0;
+@media (max-width: 600px) {
+    .couple-name span {
+        display: block;
+    }
+
+    .couple-name .heart {
+        margin: 10px 0;
+    }
 }
 
 .invite-text {
@@ -118,7 +124,6 @@ header {
     margin: 0;
 }
 
-/* MOBILE NAME BREAK */
 .main-names span {
     display: inline;
 }
@@ -133,7 +138,7 @@ header {
     }
 
     .header-content {
-        margin-top: 180px;
+        padding-top: 240px;
     }
 }
 
