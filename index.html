@@ -17,9 +17,9 @@ body {
     overflow-x: hidden;
 }
 
-/* ✅ ADD THIS */
 body.no-scroll {
     overflow: hidden;
+    height: 100vh;
 }
 
 /* GOLD PARTICLES */
@@ -37,18 +37,19 @@ body.no-scroll {
 /* ENTRY */
 #entry {
     position: fixed;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
-    height: 100dvh; /* ✅ FIX */
+    height: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
     background: radial-gradient(circle, #1a1a1a, #000);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999; /* ✅ ensure full cover */
+    z-index: 9999;
+    overflow: hidden;
 }
 
-/* ✅ ADD THIS */
 .particles-entry {
     pointer-events: none;
     position: absolute;
@@ -71,8 +72,13 @@ body.no-scroll {
     text-shadow: 0 0 20px rgba(255,215,0,0.7);
 }
 
-.heart {
-    animation: beat 1s infinite;
+/* ✅ ONLY CHANGE ADDED */
+.couple-name span {
+    display: block;
+}
+
+.couple-name .heart {
+    margin: 10px 0;
 }
 
 .invite-text {
@@ -89,13 +95,6 @@ body.no-scroll {
     cursor: pointer;
 }
 
-/* ANIMATION */
-@keyframes beat {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.3); }
-    100% { transform: scale(1); }
-}
-
 /* HEADER */
 header {
     height: 100vh;
@@ -104,13 +103,6 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.header-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
 }
 
 .header-content {
@@ -124,6 +116,25 @@ header {
     font-size: 75px;
     color: #f5d17a;
     margin: 0;
+}
+
+/* MOBILE NAME BREAK */
+.main-names span {
+    display: inline;
+}
+
+@media (max-width: 600px) {
+    .main-names span {
+        display: block;
+    }
+
+    .main-names .and {
+        margin: 5px 0;
+    }
+
+    .header-content {
+        margin-top: 180px;
+    }
 }
 
 .line {
@@ -142,12 +153,17 @@ header {
     margin-top: 15px;
 }
 
-/* EVENTS */
+/* EVENTS SECTION */
+.events-section {
+    margin: 60px 0;
+}
+
 .events-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    margin-top: 30px;
 }
 
 .event-card {
@@ -155,7 +171,9 @@ header {
     padding: 20px;
     border-radius: 15px;
     border: 1px solid gold;
-    max-width: 320px;
+    width: 300px;
+    max-width: 90%;
+    box-sizing: border-box;
 }
 
 .event-title {
@@ -176,8 +194,8 @@ header {
 /* CAROUSEL */
 .carousel {
     overflow: hidden;
-    max-width: 900px;
-    margin: auto;
+    max-width: 1200px;
+    margin: 60px auto;
 }
 
 .carousel-track {
@@ -188,7 +206,7 @@ header {
 
 .carousel img {
     width: 100%;
-    height: 450px;
+    height: 550px;
     object-fit: cover;
 }
 
@@ -201,7 +219,6 @@ header {
 
 <body>
 
-<!-- PARTICLES -->
 <div class="particles-bg"></div>
 
 <!-- ENTRY -->
@@ -210,7 +227,9 @@ header {
 
     <div class="entry-content">
         <h1 class="couple-name">
-            Mahendra ❤️ Deepali
+            <span>Mahendra</span>
+            <span class="heart">❤️</span>
+            <span>Deepali</span>
         </h1>
 
         <p class="invite-text">We invite you to celebrate our wedding</p>
@@ -221,11 +240,11 @@ header {
 
 <!-- HEADER -->
 <header>
-    <div class="header-overlay"></div>
-
     <div class="header-content">
         <h1 class="main-names">
-            Mahendra &nbsp&&nbsp Deepali
+            <span>Mahendra</span>
+            <span class="and">&</span>
+            <span>Deepali</span>
         </h1>
 
         <div class="line"></div>
@@ -235,7 +254,7 @@ header {
 </header>
 
 <!-- EVENTS -->
-<div>
+<div class="events-section">
     <h2>Wedding Events</h2>
 
     <div class="events-container">
@@ -258,9 +277,7 @@ header {
             <div class="event-title">💍 Wedding & Reception</div>
             <p>15 May 2026 | 6:15 PM</p>
             <p>Murlidhar Banquet,<br>Thane West, Maharashtra</p>
-            <a class="btn" href="https://www.google.com/maps/place/Murlidhar+Banquet+-+Best+Banquet+Hall+in+Thane/@19.2771232,72.9575781,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7bb3059d473df:0x7b07f35d37ea41dd!8m2!3d19.2771232!4d72.9575781!16s%2Fg%2F11ydkq38gm?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank">
-                📍 View Location
-            </a>
+            <a class="btn" href="https://www.google.com/maps/place/Murlidhar+Banquet" target="_blank">📍 Location</a>
         </div>
 
     </div>
@@ -297,20 +314,14 @@ header {
 </div>
 
 <script>
-// ✅ LOCK SCROLL INITIALLY
 document.body.classList.add("no-scroll");
 
-// ENTRY
 function enterSite() {
     document.getElementById("entry").style.display = "none";
-
-    // ✅ ENABLE SCROLL AFTER ENTER
     document.body.classList.remove("no-scroll");
-
     window.scrollTo(0,0);
 }
 
-// COUNTDOWN
 var weddingDate = new Date("May 15, 2026 18:15:00").getTime();
 
 setInterval(function() {
