@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
+/* (ALL YOUR EXISTING CSS — UNCHANGED) */
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -72,7 +73,6 @@ body.no-scroll {
     text-shadow: 0 0 20px rgba(255,215,0,0.7);
 }
 
-/* ✅ FIXED: Desktop inline, Mobile block */
 .couple-name span {
     display: inline;
 }
@@ -150,7 +150,6 @@ header {
     opacity: 0.7;
 }
 
-/* COUNTDOWN */
 .wedding-date {
     font-size: 22px;
     letter-spacing: 2px;
@@ -158,7 +157,7 @@ header {
     margin-top: 15px;
 }
 
-/* EVENTS SECTION */
+/* EVENTS */
 .events-section {
     margin: 60px 0;
 }
@@ -263,28 +262,26 @@ header {
     <h2>Wedding Events</h2>
 
     <div class="events-container">
-
         <div class="event-card">
             <div class="event-title">🎶 Sangeet</div>
             <p>14 May 2026 | 5:00 PM</p>
             <p>Hillside Community Hall,<br>IIT Powai, Mumbai</p>
-            <a class="btn" href="https://www.google.com/maps/place/Hillside+Community+Hall/data=!4m2!3m1!1s0x0:0xa88236d0b759839a" target="_blank">📍 Location</a>
+            <a class="btn" href="https://www.google.com/maps/place/Hillside+Community+Hall" target="_blank">📍 Location</a>
         </div>
 
         <div class="event-card">
             <div class="event-title">🌼 Haldi</div>
             <p>14 May 2026 | 6:00 PM</p>
             <p>Hillside Community Hall,<br>IIT Powai, Mumbai</p>
-            <a class="btn" href="https://www.google.com/maps/place/Hillside+Community+Hall/data=!4m2!3m1!1s0x0:0xa88236d0b759839a" target="_blank">📍 Location</a>
+            <a class="btn" href="https://www.google.com/maps/place/Hillside+Community+Hall" target="_blank">📍 Location</a>
         </div>
 
         <div class="event-card">
             <div class="event-title">💍 Wedding & Reception</div>
             <p>15 May 2026 | 6:15 PM</p>
             <p>Murlidhar Banquet,<br>Thane West, Maharashtra</p>
-            <a class="btn" href="https://www.google.com/maps/place/Murlidhar+Banquet+-+Best+Banquet+Hall+in+Thane/@19.2771232,72.9575781,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7bb3059d473df:0x7b07f35d37ea41dd!8m2!3d19.2771232!4d72.9575781!16s%2Fg%2F11ydkq38gm?entry=ttu&g_ep=EgoyMDI2MDQyNi4wIKXMDSoASAFQAw%3D%3D" target="_blank">📍 Location</a>
+            <a class="btn" href="https://www.google.com/maps/place/Murlidhar+Banquet" target="_blank">📍 Location</a>
         </div>
-
     </div>
 </div>
 
@@ -294,7 +291,6 @@ header {
 
     <div class="carousel">
         <div class="carousel-track">
-
             <img src="1.jpg">
             <img src="2.jpg">
             <img src="3.jpg">
@@ -308,7 +304,6 @@ header {
             <img src="4.jpg">
             <img src="5.jpg">
             <img src="6.jpg">
-
         </div>
     </div>
 </div>
@@ -318,6 +313,11 @@ header {
     <p>We look forward to celebrating with you 💖</p>
 </div>
 
+<!-- 🎵 MUSIC -->
+<audio id="bg-music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
 <script>
 document.body.classList.add("no-scroll");
 
@@ -325,6 +325,10 @@ function enterSite() {
     document.getElementById("entry").style.display = "none";
     document.body.classList.remove("no-scroll");
     window.scrollTo(0,0);
+
+    // ▶️ PLAY MUSIC
+    var music = document.getElementById("bg-music");
+    music.play();
 }
 
 var weddingDate = new Date("May 15, 2026 18:15:00").getTime();
