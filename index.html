@@ -125,13 +125,17 @@ body.locked {
 
 /* ===== COVER ===== */
 header {
-    min-height:100vh;
-    height:auto;
+    height:100vh;
+
     background:
-        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.30)),
+        linear-gradient(
+            rgba(255,255,255,0.10),
+            rgba(255,255,255,0.05)
+        ),
         url('cover.jpg') center/cover no-repeat;
+
     opacity:0;
-    transition:1s ease;
+    transition:0.8s;
 }
 
 header.active { opacity:1; }
@@ -157,7 +161,11 @@ header.active { opacity:1; }
     font-size:34px;
     color:white;
     letter-spacing:1px;
-    text-shadow:0 4px 12px rgba(0,0,0,0.8);
+text-shadow:
+    0 8px 25px rgba(0,0,0,1),
+    0 3px 10px rgba(0,0,0,0.85),
+    0 0 10px rgba(255,255,255,0.3);
+
     transform: translateX(4px);
 }
 
@@ -192,8 +200,11 @@ header.active { opacity:1; }
     letter-spacing:1px;
     text-align:center;
 text-shadow:
-    0 6px 20px rgba(0,0,0,0.85),
-    0 0 8px rgba(255,255,255,0.2);
+    0 12px 40px rgba(0,0,0,1),
+    0 6px 18px rgba(0,0,0,0.9),
+    0 2px 6px rgba(0,0,0,0.8),
+    0 0 14px rgba(255,255,255,0.35),
+    0 0 22px rgba(0,0,0,0.6);
 }
 
 .hero-names .amp {
@@ -877,6 +888,7 @@ justify-content:center;
             <a href="https://www.google.com/maps/search/?api=1&query=Murlidhar+Banquet+Thane" target="_blank" class="location-btn">Location</a>
         </div>
     </div>
+
     
 <section class="moments-section">
 
@@ -963,9 +975,14 @@ function enterSite(){
     window.scrollTo(0,0);
 
     // STEP 4 — play music
-    const music = document.getElementById("bgMusic");
-    music.volume = 0.5;
-    music.play().catch(() => {});
+const music = document.getElementById("bgMusic");
+
+if (music.currentTime === 0) {
+    music.currentTime = 23.2;   // start point
+}
+
+music.volume = 0.5;
+music.play().catch(() => {});
 document.getElementById("musicToggle").style.display = "flex";
 }
 window.unlocked = false;
