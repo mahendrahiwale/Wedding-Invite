@@ -5,8 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mahendra & Deepali Wedding</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
 
 body {
@@ -15,7 +17,12 @@ body {
     background: #fdf7f5;
     overflow-x: hidden;
 
-    -webkit-font-smoothing: antialiased;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+body.loaded {
+    opacity: 1;
 }
 html, body {
     scroll-behavior: smooth;
@@ -323,8 +330,7 @@ text-shadow:
     display: flex;
     justify-content: center;
     align-items: stretch;
-
-    gap: 20px;
+    gap: 16px;
 
     flex-wrap: nowrap;       /* ❗ force horizontal */
     overflow-x: auto;        /* mobile scroll */
@@ -849,6 +855,7 @@ justify-content:center;
     <h2 id="weddingEventsHeading" class="scratch-title">Wedding Events</h2>
 
     <div class="events-wrapper" id="eventsWrapper">
+
         <div class="event-card">
             <div class="event-title">🎶 Sangeet</div>
             <div class="event-date">14 May 2026 | 5:00 PM</div>
@@ -870,7 +877,7 @@ justify-content:center;
             <a href="https://www.google.com/maps/search/?api=1&query=Murlidhar+Banquet+Thane" target="_blank" class="location-btn">Location</a>
         </div>
     </div>
-
+    
 <section class="moments-section">
 
     <h2 class="scratch-title">Our Moments</h2>
@@ -1235,12 +1242,26 @@ document.addEventListener("DOMContentLoaded", () => {
         toggleBtn.innerText = music.muted ? "🔇" : "🔊";
     };
 
+    let wasPlaying = false;
+
     document.addEventListener("visibilitychange", () => {
+
         if (document.hidden) {
+            wasPlaying = !music.paused;
             music.pause();
+        } else {
+            if (wasPlaying) {
+                music.play().catch(() => {});
+            }
         }
     });
 
+});
+document.addEventListener("click", () => {
+    music.play().catch(() => {});
+});
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
 });
 </script>
 <audio id="bgMusic" loop>
