@@ -1010,8 +1010,27 @@ const card = document.querySelector(".scratch-card");
 canvas.width = card.offsetWidth;
 canvas.height = card.offsetHeight;
 
+// 🎀 pink scratch layer
 ctx.fillStyle = "#f8cdd1";
 ctx.fillRect(0,0,canvas.width,canvas.height);
+
+// ✨ ADD TEXT HERE (IMPORTANT POSITION)
+
+// ✨ PREMIUM MATCHING TEXT
+
+ctx.font = "600 24px Poppins";
+ctx.textAlign = "center";
+ctx.textBaseline = "middle";
+
+// 🎯 match heading color
+ctx.fillStyle = "#7a2e2e";   // same family as your titles
+
+// no shadow, no stroke (clean)
+ctx.shadowBlur = 0;
+
+// draw
+ctx.fillText("Scratch here", canvas.width / 2, canvas.height / 2);
+
 
 document.getElementById("scratchBtn").addEventListener("click", () => {
     canvas.style.pointerEvents = "auto";
